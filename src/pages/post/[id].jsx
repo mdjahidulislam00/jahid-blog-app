@@ -11,9 +11,14 @@ export default function Post({post}) {
   }
   return (
     <div>
-      <h1 className="p-5 text-3xl font-semibold">
+      {/* <h1 className="p-5 text-3xl font-semibold">
         {post.title}
-      </h1>
+      </h1> */}
+      <div className="w-96 border-slate-200 m-5 bg-slate-100 p-2 ">
+        <h1 className="text-xl font-semibold p-2">{post.title}</h1>
+        <h1 className="text-sm font-semibold p-2">Author: {post.username}</h1>
+        <p className="w-80 h-20 bg-white rounded-lg p-5 overflow-y-auto mb-3">{post.content}</p>
+      </div>
     </div>
   );
 }

@@ -18,10 +18,10 @@ function BlogDetails() {
   return (
     <div className="container mx-auto">
         <h1 className="text-3xl font-bold text-sky-500 text-center py-2">Blogs</h1>
-        <div className="grid grid-cols-3 gap-10">
+        <div className="grid grid-cols-3 gap-5">
           { posts && posts.length> 0 ?
-              posts.map((post, index) => <BlogCard key={index} title={post.title} content={post.content} />)
-              : 'There is no post'
+              posts.map((post, index) => <BlogCard key={index} post={post} />)
+              : 'There is no post......'
           }
         </div>
     </div>
