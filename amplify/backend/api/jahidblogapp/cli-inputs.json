@@ -4,16 +4,13 @@
     "apiName": "jahidblogapp",
     "serviceName": "AppSync",
     "defaultAuthType": {
-      "mode": "AMAZON_COGNITO_USER_POOLS",
-      "cognitoUserPoolId": "authjahidblogapp2a614be7"
+      "mode": "API_KEY",
+      "expirationTime": 7
     },
-    "conflictResolution": {},
     "additionalAuthTypes": [
       {
-        "mode": "API_KEY",
-        "expirationTime": 365,
-        "apiKeyExpirationDate": "2024-11-13T10:26:18.329Z",
-        "keyDescription": "this is api"
+        "mode": "AMAZON_COGNITO_USER_POOLS",
+        "cognitoUserPoolId": "authjahidblogappe9f64761"
       }
     ]
   }

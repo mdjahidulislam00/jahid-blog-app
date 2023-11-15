@@ -7,26 +7,24 @@
             "UserPoolId"
           ],
           "category": "auth",
-          "resourceName": "jahidblogapp2a614be7"
+          "resourceName": "jahidblogappe9f64761"
         }
       ],
       "output": {
         "authConfig": {
           "additionalAuthenticationProviders": [
             {
-              "apiKeyConfig": {
-                "apiKeyExpirationDate": "2024-11-13T10:26:18.329Z",
-                "apiKeyExpirationDays": 365,
-                "description": "this is api"
-              },
-              "authenticationType": "API_KEY"
+              "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+              "userPoolConfig": {
+                "userPoolId": "authjahidblogappe9f64761"
+              }
             }
           ],
           "defaultAuthentication": {
-            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
-            "userPoolConfig": {
-              "userPoolId": "authjahidblogapp2a614be7"
-            }
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 7
+            },
+            "authenticationType": "API_KEY"
           }
         }
       },
@@ -35,7 +33,7 @@
     }
   },
   "auth": {
-    "jahidblogapp2a614be7": {
+    "jahidblogappe9f64761": {
       "customAuth": false,
       "dependsOn": [],
       "frontendAuthConfig": {

@@ -1,35 +1,22 @@
 {
   "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-jahidblogapp-dev-160456-authRole",
-      "UnauthRoleArn": "arn:aws:iam::678306532042:role/amplify-jahidblogapp-dev-160456-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::678306532042:role/amplify-jahidblogapp-dev-160456-authRole",
+      "AuthRoleName": "amplify-jahidblogapp-dev-132058-authRole",
+      "UnauthRoleArn": "arn:aws:iam::678306532042:role/amplify-jahidblogapp-dev-132058-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::678306532042:role/amplify-jahidblogapp-dev-132058-authRole",
       "Region": "eu-north-1",
-      "DeploymentBucketName": "amplify-jahidblogapp-dev-160456-deployment",
-      "UnauthRoleName": "amplify-jahidblogapp-dev-160456-unauthRole",
-      "StackName": "amplify-jahidblogapp-dev-160456",
-      "StackId": "arn:aws:cloudformation:eu-north-1:678306532042:stack/amplify-jahidblogapp-dev-160456/1bf91070-820c-11ee-a6bb-0e730f2687e2",
-      "AmplifyAppId": "d3i7ttyifgrj2w"
-    }
-  },
-  "blogapp": {
-    "awscloudformation": {
-      "AuthRoleName": "amplify-jahidblogapp-blogapp-161137-authRole",
-      "UnauthRoleArn": "arn:aws:iam::678306532042:role/amplify-jahidblogapp-blogapp-161137-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::678306532042:role/amplify-jahidblogapp-blogapp-161137-authRole",
-      "Region": "eu-north-1",
-      "DeploymentBucketName": "amplify-jahidblogapp-blogapp-161137-deployment",
-      "UnauthRoleName": "amplify-jahidblogapp-blogapp-161137-unauthRole",
-      "StackName": "amplify-jahidblogapp-blogapp-161137",
-      "StackId": "arn:aws:cloudformation:eu-north-1:678306532042:stack/amplify-jahidblogapp-blogapp-161137/0b0f93a0-820d-11ee-a95d-0e6b3a03bc7a",
-      "AmplifyAppId": "d3i7ttyifgrj2w"
+      "DeploymentBucketName": "amplify-jahidblogapp-dev-132058-deployment",
+      "UnauthRoleName": "amplify-jahidblogapp-dev-132058-unauthRole",
+      "StackName": "amplify-jahidblogapp-dev-132058",
+      "StackId": "arn:aws:cloudformation:eu-north-1:678306532042:stack/amplify-jahidblogapp-dev-132058/88947b80-8387-11ee-95e4-0e5cd22f54b0",
+      "AmplifyAppId": "d7fyecxp9pglp"
     },
     "categories": {
+      "auth": {
+        "jahidblogappe9f64761": {}
+      },
       "api": {
         "jahidblogapp": {}
-      },
-      "auth": {
-        "jahidblogapp2a614be7": {}
       }
     }
   }

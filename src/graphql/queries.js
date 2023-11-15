@@ -37,15 +37,15 @@ export const listPosts = /* GraphQL */ `
     }
   }
 `;
-export const postsByUserName = /* GraphQL */ `
-  query PostsByUserName(
+export const postsByUsername = /* GraphQL */ `
+  query PostsByUsername(
     $username: String!
     $sortDirection: ModelSortDirection
     $filter: ModelPostFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    postsByUserName(
+    postsByUsername(
       username: $username
       sortDirection: $sortDirection
       filter: $filter
