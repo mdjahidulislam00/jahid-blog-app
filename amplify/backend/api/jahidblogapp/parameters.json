@@ -1,0 +1,12 @@
+{
+  "AppSyncApiName": "jahidblogapp",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authjahidblogapp2a614be7",
+      "Outputs.UserPoolId"
+    ]
+  },
+  "AuthModeLastUpdated": "2023-11-14T10:26:21.541Z"
+}
