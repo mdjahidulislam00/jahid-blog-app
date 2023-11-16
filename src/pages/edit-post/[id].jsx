@@ -1,11 +1,17 @@
 import { updatePost } from '@/graphql/mutations';
 import { getPost } from '@/graphql/queries';
-import { API } from 'aws-amplify';
-import { useRouter } from 'next/router'
-import React, { useEffect, useState } from 'react'
+import { API, Storage } from 'aws-amplify';
+import { nanoid } from 'nanoid';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
+import React, { useEffect, useRef, useState } from 'react';
+
 
 function EditPost() {
   const [post, setPost] = useState(null);
+  const [coverImage, setCoverImage] = useState(null)
+  const [localImage, setLocalImage] = useState(null)
+  const fileInput = useRef()
   const router = useRouter();
   const { id } = router.query;
 
@@ -18,15 +24,35 @@ function EditPost() {
           variables: { id },
         });
         setPost(postData.data.getPost);
+        if(postData.data.getPost.coverImage){
+          updateCoverImage(postData.data.getPost.coverImage)
+        }
       } catch (error) {
         console.error("Error fetching post:", error);
         setPost(null);
       }
     }
     fetchPost();
-  }, [id]);
+
+  },);
 
   if (!post) return null;
+
+  async function updateCoverImage(coverImage){
+    const imageKey = await Storage.get(coverImage)
+    console.log(post)
+    setCoverImage(imageKey)
+  }
+  async function uploadImage(){
+    fileInput.current.click()
+  }
+  function handleChange (e){
+    const fileUpload = e.target.files[0];
+    console.log(fileUpload)
+    if(!fileUpload) return
+    setCoverImage(fileUpload)
+    setLocalImage(URL.createObjectURL(fileUpload))
+  }
 
   const { title, content } = post;
 
@@ -42,6 +68,11 @@ function EditPost() {
       content,
       title,
     };
+    if(coverImage && localImage){
+      const fileName = `${coverImage.name}_${nanoid()}`
+      postUpdated.coverImage= fileName
+      await Storage.put(fileName, coverImage);
+    }
     try {
       await API.graphql({
         query: updatePost,
@@ -76,12 +107,30 @@ function EditPost() {
           value={content}
           placeholder='Content'
         />
+        {
+          coverImage &&
+          <div>
+        {console.log(coverImage)}
+        
+            <div className='w-[500px] h-[300px]'>
+              <Image className='my-5 border-4 border-sky-400 rounded' src={localImage ? localImage : coverImage} alt={title} width={520} height={300} />
+            </div>
+            <input className='absolute w-0 h-0' type="file" ref={fileInput} onChange={handleChange} />
+            <button
+            onClick={uploadImage}
+            className='bg-purple-400 text-white font-semibold py-2 px-6 rounded hover:bg-opacity-80'
+            type="button"
+        >
+          Update image
+        </button>
+          </div>
+        }
         <button
           onClick={updateCurrentPost}
           className='bg-sky-400 text-white font-semibold py-2 px-6 rounded hover:bg-opacity-80'
           type="button"
         >
-          Edit the post
+          Edited
         </button>
       </div>
     </div>

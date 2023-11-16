@@ -1,0 +1,16 @@
+{
+  "resourceName": "jahidblog",
+  "policyUUID": "df159598",
+  "bucketName": "jahidblogappab88997f523349a79f46c2b5f1ddbf2f",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "READ"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}

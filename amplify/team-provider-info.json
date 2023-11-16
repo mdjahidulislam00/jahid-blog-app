@@ -17,6 +17,9 @@
       },
       "api": {
         "jahidblogapp": {}
+      },
+      "storage": {
+        "jahidblog": {}
       }
     }
   }

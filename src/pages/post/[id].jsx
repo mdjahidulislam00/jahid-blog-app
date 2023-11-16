@@ -1,23 +1,54 @@
 import { getPost, listPosts } from "@/graphql/queries";
-import { API } from "aws-amplify";
-import { useRouter } from "next/router"; // Changed from "next/navigation" to "next/router"
+import { API, Storage } from "aws-amplify";
+import Image from "next/image";
+import { useRouter } from "next/router"; 
+import { useEffect, useState } from "react";
 
 export default function Post({post}) {
+  const [coverImage, setCoverImage] = useState(null)
+  console.log(coverImage)
+
+  useEffect(()=> {
+    updateCoverImage()
+  },[])
+
+  async function updateCoverImage (){
+    if(post.coverImage){
+      const imageKey = await Storage.get(post.coverImage);
+      console.log(imageKey)
+      setCoverImage(imageKey)
+    }
+  }
 
   const router = useRouter();
-  console.log('router', router)
   if (router.isFallback) {
     return <div>Loading......</div>;
   }
   return (
-    <div>
+    <div className="flex justify-center bg-slate-100">
       {/* <h1 className="p-5 text-3xl font-semibold">
         {post.title}
       </h1> */}
-      <div className="w-96 border-slate-200 m-5 bg-slate-100 p-2 ">
-        <h1 className="text-xl font-semibold p-2">{post.title}</h1>
-        <h1 className="text-sm font-semibold p-2">Author: {post.username}</h1>
-        <p className="w-80 h-20 bg-white rounded-lg p-5 overflow-y-auto mb-3">{post.content}</p>
+      <div className="flex flex-col justify-center border-slate-200 m-5  p-2 ">
+        <h1 className="text-2xl text-sky-400 font-semibold py-5 text-center">{post.title}</h1>
+        {
+          coverImage && 
+
+          <Image className="rounded-lg" src={coverImage} alt='this is cover image' width={600} height={600} />
+
+        }
+        <div className="flex justify-between">
+          <h1 className="text-sm font-semibold p-2 text-gray-600">Author: {post.username}</h1>
+          <p className=" py-1 text-sm text-gray-500"> {new Date(post.createdAt).toLocaleString("en-US", {
+              weekday: "short",
+              month: "short",
+              day: "numeric",
+              hour: "numeric",
+              minute: "numeric",
+              hour12: true,
+            })}</p>
+        </div>
+        <p className="h-20 bg-white text-center rounded-lg p-5 overflow-y-auto mb-3">{post.content}</p>
       </div>
     </div>
   );
